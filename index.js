@@ -110,3 +110,16 @@ app.post('/books/updatebook', (req, res) => {
     res.redirect('/books')
   })
 })
+
+// DELETE
+app.post('/books/remove/:id', (req, res) => {
+    const id = req.params.id
+  
+    const sql = `DELETE FROM books WHERE id = ${id}`
+  
+    connection.query(sql, (err) => {
+      if (err) throw err;
+  
+      res.redirect('/books')
+    })
+})
